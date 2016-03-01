@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+
+public class LongSubsequence 
+{
+	static int subSeq(String s)
+	{
+		if(s.length()==1)
+			return 1;
+		else
+		{
+			int size = 1;
+			char current = s.charAt(0);
+			for(int i=1;i<s.length();i++)
+			{
+				
+					if(current == s.charAt(i))
+						size++;
+					else
+						return Math.max(size, subSeq(s.substring(i)));
+					
+			}
+			return size;
+		}				
+	}
+	
+	public static void main(String[] args)
+	{
+		Scanner S = new Scanner(System.in);
+		
+		System.out.println("Enter the string");
+		String input = S.nextLine();
+		
+		System.out.println(" The longest subsequence is: "+subSeq(input.toLowerCase()));
+	}
+
+}
